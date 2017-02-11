@@ -1,16 +1,16 @@
 general:
 	artifacts:
-		- /home/ubuntu/your-app-name/app/build/outputs/apk/
-machine:
-	java:
-		version: oraclejdk8
-		environment:
-			ANDROID_HOME: /usr/local/android-sdk-linux
+		- /home/ubuntu/Istgaah/app/build/outputs/apk/
+# machine:
+# java:
+# version: oraclejdk8
+# environment:
+# ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
 	pre:
-		- echo y | android update sdk --no-ui --all --filter "platform-tools, tools"
+		# - echo y | android update sdk --no-ui --all --filter "platform-tools, tools"
 		- echo y | android update sdk --no-ui --all --filter "android-24, build-tools-25.0.2"
-		- ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
+		# - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 test:
   override:
 		- emulator -avd circleci-android24 -no-window:
@@ -18,5 +18,5 @@ test:
         parallel: true
     - circle-android wait-for-boot
 		- ./gradlew androidTest
-    - cp -r Istgaah/build/outputs $CIRCLE_ARTIFACTS
-    - cp -r Istgaah/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - cp -r Istgaah/app/build/outputs $CIRCLE_ARTIFACTS
+    - cp -r Istgaah/app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
