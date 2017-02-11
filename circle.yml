@@ -2,10 +2,8 @@ general:
     artifacts:
         - /home/ubuntu/Istgaah/app/build/outputs/apk/
 machine:
-    java:
-        version: oraclejdk8
-environment:
-    ANDROID_HOME: /usr/local/android-sdk-linux
+	environment:
+    	ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
     pre:
         - echo y | android update sdk --no-ui --all --filter "platform-tools, tools"
